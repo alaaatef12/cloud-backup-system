@@ -18,10 +18,10 @@ This project automates file backups to **AWS S3** using **Bash**, **AWS CLI**, a
 
 ### 2️⃣ Setup
 Clone the repository:
-\`\`\`bash
+```bash
 git clone https://github.com/alaaatef12/cloud-backup-system.git
 cd cloud-backup-system
-\`\`\`
+```
 
 ### 3️⃣ Backup Script (Bash)
 This script compresses your files and uploads them to AWS S3.
