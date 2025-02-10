@@ -1,0 +1,313 @@
+
+- command: whoami                                                                                                                                                                                                                 cloudshell-user
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739129659
+- command: aws s3 ls
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739129722
+- command: aws s3 ls
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739129969
+- command: ls                                                                                                                                                                                                      bash: s3: command not found
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739129983
+- command: aws s3 ls                                                                                                                                                                                               2025-02-09 19:40:59 alaa2000
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130071
+- command: aws s3 ls                                                                                                                                                                                               2025-02-09 19:40:59 alaa2000                                                                                                                                                                                                  2025-02-09 19:43:23 alaa2000backup
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130242
+- command: nano backup_to_s3.sh
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130328
+- command: h3.sh                                                                                                                                                                                                   #!/bin/bash                                                                                                                                                                                                                                                                                                                                                                                                                                                 # Variables                                                                                                                                                                                                                   S3_BUCKET=\"your-bucket-name\"                                                                                                                                                                                                  BACKUP_SOURCE=\"$HOME\"                                                                                                                                                                                                         TIMESTAMP=$(date +\"%Y-%m-%d_%H-%M-%S\")                                                                                                                                                                                        BACKUP_NAME=\"backup_$TIMESTAMP.tar.gz\"                                                                                                                                                                                        LOCAL_BACKUP=\"/tmp/$BACKUP_NAME\"                                                                                                                                                                                                                                                                                                                                                                                                                            # Create a compressed archive of the home directory                                                                                                                                                                           tar -czf $LOCAL_BACKUP -C $BACKUP_SOURCE .                                                                                                                                                                                                                                                                                                                                                                                                                  # Upload to S3                                                                                                                                                                                                                aws s3 cp $LOCAL_BACKUP s3://$S3_BUCKET/                                                                                                                                                                                                                                                                                                                                                                                                                    # Confirm upload                                                                                                                                                                                                              if [ $? -eq 0 ]; then                                                                                                                                                                                                             echo \"Backup uploaded successfully: $BACKUP_NAME\"                                                                                                                                                                         else                                                                                                                                                                                                                              echo \"Backup failed!\"                                                                                                                                                                                                     fi                                                                                                                                                                                                                                                                                                                                                                                                                                                          # Cleanup local backup file                                                                                                                                                                                                   rm $LOCAL_BACKUP
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130345
+- command: chmod +x backup_to_s3.sh
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130369
+- command: ./backup_to_s3.sh                                                                                                                                                                                       upload failed: ../../tmp/backup_2025-02-09_19-46-26.tar.gz to s3://your-bucket-name/backup_2025-02-09_19-46-26.tar.gz An error occurred (AllAccessDisabled) when calling the PutObject operation: All access to this object has been disabled                                                                                                                                                                                                               Backup failed!
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130387
+- command: aws sts get-caller-identity                                                                                                                                                                             {                                                                                                                                                                                                                                 \"UserId\": \"767828721594\",                                                                                                                                                                                                     \"Account\": \"767828721594\",                                                                                                                                                                                                    \"Arn\": \"arn:aws:iam::767828721594:root\"                                                                                                                                                                                   }
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130465
+- command: aws s3api get-public-access-block --bucket my-backup-bucket                                                                                                                                                                                                                                                                                                                                                                           An error occurred (AccessDenied) when calling the GetPublicAccessBlock operation: Access Denied
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130532
+- command: shckup-bucket
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130653
+- command: _s3.sh
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130763
+- command: upload: ../../tmp/backup_2025-02-09_19-52-59.tar.gz to s3://alaa2000/backup_2025-02-09_19-52-59.tar.gz                                                                                                                        Backup uploaded successfully: backup_2025-02-09_19-52-59.tar.gz
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130781
+- command: crontab -e                                                                                                                                                                                              bash: crontab: command not found
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130866
+- command: sudo apt update && sudo apt install cron -y                                                                                                                                                             sudo: apt: command not found
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130939
+- command: sudo yum update && sudo yum install cron -y                                                                                                                                                             Last metadata expiration check: 0:26:13 ago on Sun 09 Feb 2025 07:30:25 PM UTC.                                                                                                                                               Dependencies resolved.                                                                                                                                                                                                        Nothing to do.                                                                                                                                                                                                                Complete!                                                                                                                                                                                                                     Last metadata expiration check: 0:26:13 ago on Sun 09 Feb 2025 07:30:25 PM UTC.                                                                                                                                               No match for argument: cron                                                                                                                                                                                                   Error: Unable to find a match: cron
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739130998
+- command: on -y                                                                                                                                                                                                   Last metadata expiration check: 0:26:48 ago on Sun 09 Feb 2025 07:30:25 PM UTC.                                                                                                                                               No match for argument: cron                                                                                                                                                                                                   Error: No packages marked for upgrade.
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739131033
+- command: sudo yum update                                                                                                                                                                                         Last metadata expiration check: 0:27:25 ago on Sun 09 Feb 2025 07:30:25 PM UTC.                                                                                                                                               Dependencies resolved.                                                                                                                                                                                                        Nothing to do.                                                                                                                                                                                                                Complete!
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739131070
+- command: nano ~/.config/systemd/user/backup_to_s3.service
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739131491
+- command: nano ~/.config/systemd/user/backup_to_s3.service
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739131575
+- command: emd/user/backup_to_s3.service_to_s3.service
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739131737
+- command: sudo vim ~/.config/systemd/user/backup_to_s3.service
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739131777
+- command: sudo vim ~/.config/systemd/user/backup_to_s3.service
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739131992
+- command: mkdir -p ~/.config/systemd/user/
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739131998
+- command: mkdir -p ~/.config/systemd/user/
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739132002
+- command: mkdir -p ~/.config/systemd/user/
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739132016
+- command: md/user/ig/systemd/user/
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739132045
+- command: ls ~/.config/systemd/user
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739132053
+- command: :~~ $ ls ~/.conano ~/.config/systemd/user/backup_to_s3.service
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739132068
+- command: mkdir -p ~/.config/systemd/user/backup_to_s3.service
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739132088
+- command: md/user                                                                                                                                                                                                 backup_to_s3.service  nano
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739132110
+- command: rmdir ~/.config/systemd/user/nano
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739132146
+- command: md/user                                                                                                                                                                                                 backup_to_s3.service
+  exit_code: 0
+  shell: bash
+  session_id: b3d7a22409324c898c8479ef5d54a8f1
+  cwd: /home/cloudshell-user
+  time: 1739132197
+- command: aws s3 ls                                                                                                                                                                                               2025-02-09 19:40:59 alaa2000                                                                                                                                                                                                  2025-02-09 19:43:23 alaa2000backup
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739155323
+- command: sudo yum install at -y                                                                                                                                                                                  Last metadata expiration check: 0:16:01 ago on Mon 10 Feb 2025 02:41:42 AM UTC.                                                                                                                                               Dependencies resolved.                                                                                                                                                                                                        ============================================================================================================================================================================================================================== Package                                      Architecture                                     Version                                                            Repository                                             Size ==============================================================================================================================================================================================================================Installing:                                                                                                                                                                                                                    at                                           x86_64                                           3.1.23-6.amzn2023.0.2                                              amazonlinux                                            61 k                                                                                                                                                                                                                               Transaction Summary                                                                                                                                                                                                           ==============================================================================================================================================================================================================================Install  1 Package                                                                                                                                                                                                                                                                                                                                                                                                                                          Total download size: 61 k                                                                                                                                                                                                     Installed size: 124 k                                                                                                                                                                                                         Downloading Packages:                                                                                                                                                                                                         at-3.1.23-6.amzn2023.0.2.x86_64.rpm                                                                                                                                                           1.1 MB/s |  61 kB     00:00     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Total                                                                                                                                                                                          84 kB/s |  61 kB     00:00     Running transaction check                                                                                                                                                                                                     Transaction check succeeded.                                                                                                                                                                                                  Running transaction test                                                                                                                                                                                                      Transaction test succeeded.                                                                                                                                                                                                   Running transaction                                                                                                                                                                                                             Preparing        :                                                                                                                                                                                                      1/1   Installing       : at-3.1.23-6.amzn2023.0.2.x86_64                                                                                                                                                                      1/1   Running scriptlet: at-3.1.23-6.amzn2023.0.2.x86_64                                                                                                                                                                      1/1 Created symlink /etc/systemd/system/multi-user.target.wants/atd.service → /usr/lib/systemd/system/atd.service.                                                                                                                                                                                                                                                                                                                                                Verifying        : at-3.1.23-6.amzn2023.0.2.x86_64                                                                                                                                                                      1/1                                                                                                                                                                                                                               Installed:                                                                                                                                                                                                                      at-3.1.23-6.amzn2023.0.2.x86_64                                                                                                                                                                                                                                                                                                                                                                                                                           Complete!
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739156264
+- command: sudo systemctl start atd                                                                                                                                                                                System has not been booted with systemd as init system (PID 1). Can't operate.                                                                                                                                                Failed to connect to bus: Host is down
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739156277
+- command: pwd                                                                                                                                                                                                     /home/cloudshell-user
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739156945
+- command: ls                                                                                                                                                                                                      backup_to_s3.sh
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739156948
+- command: cat backup_to_s3.sh                                                                                                                                                                                     #!/bin/bash                                                                                                                                                                                                                                                                                                                                                                                                                                                 # Variables                                                                                                                                                                                                                   S3_BUCKET=\"alaa2000\"                                                                                                                                                                                                          BACKUP_SOURCE=\"$HOME\"                                                                                                                                                                                                         TIMESTAMP=$(date +\"%Y-%m-%d_%H-%M-%S\")                                                                                                                                                                                        BACKUP_NAME=\"backup_$TIMESTAMP.tar.gz\"                                                                                                                                                                                        LOCAL_BACKUP=\"/tmp/$BACKUP_NAME\"                                                                                                                                                                                                                                                                                                                                                                                                                            # Create a compressed archive of the home directory                                                                                                                                                                           tar -czf $LOCAL_BACKUP -C $BACKUP_SOURCE .                                                                                                                                                                                                                                                                                                                                                                                                                  # Upload to S3                                                                                                                                                                                                                aws s3 cp $LOCAL_BACKUP s3://$S3_BUCKET/                                                                                                                                                                                                                                                                                                                                                                                                                    # Confirm upload                                                                                                                                                                                                              if [ $? -eq 0 ]; then                                                                                                                                                                                                             echo \"Backup uploaded successfully: $BACKUP_NAME\"                                                                                                                                                                         else                                                                                                                                                                                                                              echo \"Backup failed!\"                                                                                                                                                                                                     fi                                                                                                                                                                                                                                                                                                                                                                                                                                                          # Cleanup local backup file                                                                                                                                                                                                   rm $LOCAL_BACKUP
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739156983
+- command: aws s3api put-bucket-versioning --bucket your-bucket-name --versioning-configuration Status=Enabled                                                                                                                                                                                                                                                                                                                                   An error occurred (AllAccessDisabled) when calling the PutBucketVersioning operation: All access to this object has been disabled
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739157539
+- command: aws s3api put-bucket-versioning --bucket alaa2000 --versioning-configuration Status=Enabled
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739157555
+- command: find /home/cloudshell-user -type f -name \"*.tar.gz\"
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739157969
+- command: find /home/cloudshell-user -type f -name \"*.tar.gz\"
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739157974
+- command: ls -lah /tmp/                                                                                                                                                                                           total 44K                                                                                                                                                                                                                     drwxrwxrwt. 1 root            root            4.0K Feb 10 02:57 .                                                                                                                                                             drwxr-xr-x. 1 root            root            4.0K Feb 10 02:41 ..                                                                                                                                                            drwxr-xr-x. 3 cloudshell-user cloudshell-user 4.0K Feb 10 02:41 cwrun                                                                                                                                                         drwxrwxrwx. 3 cloudshell-user cloudshell-user 4.0K Dec 12 13:37 .dotnet                                                                                                                                                       drwxr-xr-x. 3 cloudshell-user cloudshell-user 4.0K Feb 10 02:41 qlog                                                                                                                                                          drwx------. 2 cloudshell-user cloudshell-user 4.0K Feb 10 02:41 tmux-1000                                                                                                                                                     drwxr-xr-x. 3 root            root            4.0K Dec 12 13:34 v8-compile-cache-0
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739158047
+- command: ls -a -lah /tmp/                                                                                                                                                                                        total 44K                                                                                                                                                                                                                     drwxrwxrwt. 1 root            root            4.0K Feb 10 02:57 .                                                                                                                                                             drwxr-xr-x. 1 root            root            4.0K Feb 10 02:41 ..                                                                                                                                                            drwxr-xr-x. 3 cloudshell-user cloudshell-user 4.0K Feb 10 02:41 cwrun                                                                                                                                                         drwxrwxrwx. 3 cloudshell-user cloudshell-user 4.0K Dec 12 13:37 .dotnet                                                                                                                                                       drwxr-xr-x. 3 cloudshell-user cloudshell-user 4.0K Feb 10 02:41 qlog                                                                                                                                                          drwx------. 2 cloudshell-user cloudshell-user 4.0K Feb 10 02:41 tmux-1000                                                                                                                                                     drwxr-xr-x. 3 root            root            4.0K Dec 12 13:34 v8-compile-cache-0
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739158091
+- command: nano ~/.config/systemd/user/backup_to_s3.service
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739158282
+- command: aws s3 ls s3://your-bucket-name/                                                                                                                                                                                                                                                                                                                                                                                                                        An error occurred (AllAccessDisabled) when calling the ListObjectsV2 operation: All access to this object has been disabled
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739159913
+- command: a2000/                                                                                                                                                                                                  2025-02-09 19:53:01       4879 backup_2025-02-09_19-52-59.tar.gz
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739159926
+- command: pwd                                                                                                                                                                                                     /home/cloudshell-user
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739160327
+- command: git init                                                                                                                                                                                                hint: Using 'master' as the name for the initial branch. This default branch name                                                                                                                                             hint: is subject to change. To configure the initial branch name to use in all                                                                                                                                                hint: of your new repositories, which will suppress this warning, call:                                                                                                                                                       hint:                                                                                                                                                                                                                         hint: \t git config --global init.defaultBranch <name>                                                                                                                                                                         hint:                                                                                                                                                                                                                         hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and                                                                                                                                                       hint: 'development'. The just-created branch can be renamed via this command:                                                                                                                                                 hint:                                                                                                                                                                                                                         hint: \t git branch -m <name>                                                                                                                                                                                                  Initialized empty Git repository in /home/cloudshell-user/.git/
+  exit_code: 0
+  shell: bash
+  session_id: 59359dac7f5545ecaeb5b0d9ebe319ee
+  cwd: /home/cloudshell-user
+  time: 1739160336
